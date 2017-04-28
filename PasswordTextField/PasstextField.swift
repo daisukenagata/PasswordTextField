@@ -8,13 +8,8 @@
 
 import UIKit
 
-protocol underBarTextFeildDelegate:class{
-    
-    func pass(st:String,tag:Int,textField:UITextField)
-    
-}
 
- class PasstextField:UITextField,underBarTextFeildDelegate{
+ class PasstextField:UITextField{
     
     
     override init(frame: CGRect) {
