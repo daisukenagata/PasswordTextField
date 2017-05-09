@@ -26,12 +26,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
+
         textField.resignFirstResponder()
         return false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+      
         passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
         
         return true
