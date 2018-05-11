@@ -10,66 +10,25 @@ import UIKit
 
 class ViewController: UIViewController,UITextFieldDelegate {
 
-    //var keyboardView = KeyboardView()
     @IBOutlet weak var passTextField: PasstextField!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.passTextField.delegate = self
-        //keyboardView.frame = CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:44)
+        passTextField.delegate = self
+        passTextField.tag = 7
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.tag = 7
-        passTextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
+        passTextField.pass(st: passTextField.text!, tag: passTextField.tag, textField: textField)
         textField.resignFirstResponder()
         return false
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        textField.tag = 7
-        passTextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
+        passTextField.pass(st:passTextField.text!, tag: passTextField.tag, textField: textField)
         return true
     }
 
 }
-//protocol KeyboardDelegate: class {
-//    func keyWasTapped(text: String)
-//}
-//
-//class KeyboardView: UIView {
-//
-//    // This variable will be set as the view controller so that
-//    // the keyboard can send messages to the view controller.
-//    weak var delegate: KeyboardDelegate?
-//
-//
-//    // MARK:- keyboard initialization
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//       // initializeSubviews()
-//    }
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        initializeSubviews()
-//    }
-//
-//    func initializeSubviews() {
-//        let xibFileName = "KeyboardView" // xib extention not included
-//        let view = Bundle.main.loadNibNamed(xibFileName, owner: self, options: nil)?[0] as! UIView
-//        self.addSubview(view)
-//        view.frame = self.bounds
-//    }
-//
-//    // MARK:- Button actions from .xib file
-//    func keyTapped(_ sender: UIButton) {
-//        // When a button is tapped, send that information to the
-//        // delegate (ie, the view controller)
-//        self.delegate?.keyWasTapped(text: sender.titleLabel!.text!) // could alternatively send a tag value
-//    }
-//
-//}
-

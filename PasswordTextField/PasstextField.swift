@@ -18,9 +18,13 @@ import UIKit
         super.init(coder: aDecoder)
     }
 
-    func pass(st:String,tag:Int,textField:UITextField){
-        guard textField.tag != 0 else { return }
-        if st.count > tag { textField.text = String(st[st.startIndex..<String(tag).endIndex]) }
+    override func caretRect(for position: UITextPosition) -> CGRect { return CGRect.zero }
+    override func selectionRects(for range: UITextRange) -> [Any] { return [] }
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool { return false }
+
+    func pass(st:String,tag:Int,textField:UITextField) {
+        if st.count >= tag {
+            textField.text = String((st.prefix(tag)))
+        }
     }
 }
-
