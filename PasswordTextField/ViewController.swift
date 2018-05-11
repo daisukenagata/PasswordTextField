@@ -9,40 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController,UITextFieldDelegate {
-    
+
     //var keyboardView = KeyboardView()
     var passtextField = PasstextField()
-    
     @IBOutlet weak var textField: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MARK: - UITextFieldDelegate
-        
         self.textField.delegate = self
         //keyboardView.frame = CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:44)
-       
-        
     }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
         textField.resignFirstResponder()
         return false
     }
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-      
+        textField.tag = 7
         passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
-        
         return true
     }
 
 }
-
 //protocol KeyboardDelegate: class {
 //    func keyWasTapped(text: String)
 //}
