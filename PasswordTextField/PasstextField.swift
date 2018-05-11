@@ -8,7 +8,7 @@
 
 import UIKit
 
- class PasstextField:UITextField{
+ class PasstextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: CGRect.zero)

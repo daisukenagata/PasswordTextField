@@ -20,15 +20,15 @@ class ViewController: UIViewController,UITextFieldDelegate {
         passTextField.tag = 7
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        passTextField.pass(st:passTextField.text!, tag: passTextField.tag, textField: textField)
+        return true
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         passTextField.pass(st: passTextField.text!, tag: passTextField.tag, textField: textField)
         textField.resignFirstResponder()
         return false
-    }
-
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        passTextField.pass(st:passTextField.text!, tag: passTextField.tag, textField: textField)
-        return true
     }
 
 }
