@@ -11,25 +11,26 @@ import UIKit
 class ViewController: UIViewController,UITextFieldDelegate {
 
     //var keyboardView = KeyboardView()
-    var passtextField = PasstextField()
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var passTextField: PasstextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.textField.delegate = self
+        self.passTextField.delegate = self
         //keyboardView.frame = CGRect(x:0,y:0,width:UIScreen.main.bounds.width,height:44)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
+        textField.tag = 7
+        passTextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
         textField.resignFirstResponder()
         return false
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         textField.tag = 7
-        passtextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
+        passTextField.pass(st: textField.text!, tag: textField.tag, textField: textField)
         return true
     }
 
